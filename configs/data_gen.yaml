@@ -1,0 +1,25 @@
+# Self-distillation data generation configuration
+
+generation:
+  # Sampling parameters for vLLM
+  temperature: 1.0
+  top_k: 0
+  top_p: 1.0
+  repetition_penalty: 1.0
+  max_tokens: 131072        # Context window (128k)
+
+  # Number of solution samples per problem
+  num_samples: 64
+
+  # vLLM engine settings
+  tensor_parallel_size: 4
+  gpu_memory_utilization: 0.85
+
+  # Data-parallel: number of shards (each shard runs independently)
+  num_shards: 64
+
+processing:
+  # Group size for candidate selection training
+  group_size: 4
+  # Maximum pass ratio filter (1.0 = no filtering)
+  max_pass_ratio: 1.0

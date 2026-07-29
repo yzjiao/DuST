@@ -1,0 +1,34 @@
+{% if components.raw_text %}Problem:
+{{ components.raw_text }}{% endif %}
+{% if components.input_format %}
+
+Input Format:
+{{ components.input_format }}{% endif %}
+{% if components.output_format %}
+
+Output Format:
+{{ components.output_format }}{% endif %}
+{% if components.notes %}
+
+Notes:
+{{ components.notes }}{% endif %}
+{% if components.samples and components.samples|length > 0 %}
+
+Sample Test Cases:
+{% for sample in components.samples %}
+
+Example {{ loop.index }}:
+{% if sample.input %}Input:
+{{ sample.input }}{% endif %}
+{% if sample.output %}Output:
+{{ sample.output }}{% endif %}
+{% if sample.explanation %}Explanation:
+{{ sample.explanation }}{% endif %}
+{% endfor %}{% endif %}
+{% if starter_code %}
+
+Starter Code:
+```python
+{{ starter_code }}
+```
+{% endif %}

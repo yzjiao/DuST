@@ -1,0 +1,67 @@
+# GRPO training configuration
+
+experiment:
+  name: "qwen3_30b_instruct2507_pairacc_n8_lr1e-6_ncand4"
+  wandb_project: "dust"
+  wandb_entity: "your-entity"
+
+training:
+  total_epochs: 3
+  train_batch_size: 64
+  learning_rate: 1e-6
+  lr_warmup_steps: 10
+  weight_decay: 0.1
+
+  # PPO / GRPO parameters
+  ppo_epochs: 3
+  ppo_mini_batch_size: 16
+  ppo_micro_batch_size_per_gpu: 2
+  clip_ratio_low: 0.2
+  clip_ratio_high: 0.28
+  clip_ratio_c: 10.0
+  kl_loss_coef: 0.001
+  use_kl_loss: false
+  use_kl_in_reward: false
+  norm_adv_by_std_in_grpo: true
+  loss_agg_mode: "token-mean"
+
+  # Rollout (candidate generation during RL)
+  rollout_n: 8
+  rollout_temperature: 1.0
+  rollout_top_p: 1.0
+  rollout_top_k: -1
+
+  # Sequence lengths
+  max_prompt_length: 32768
+  max_response_length: 32768
+
+  # Reward mode: "pairacc" or "ndcg"
+  reward_mode: "pairacc"
+
+  # Checkpointing
+  save_freq: 10
+  test_freq: 10
+  max_actor_ckpt_to_keep: 1
+
+cluster:
+  # Number of GPU nodes
+  num_nodes: 2
+  gpus_per_node: 8
+
+  # Megatron parallelism (actor/ref)
+  train_tp: 1
+  train_pp: 1
+  train_ep: 8
+  train_cp: 1
+
+  # vLLM rollout parallelism
+  gen_tp: 4
+  gpu_memory_utilization: 0.7
+
+  # Offloading (for large models)
+  param_offload: true
+  optimizer_offload: true
+  grad_offload: true
+
+  # Distributed checkpointing
+  use_dist_checkpointing: true

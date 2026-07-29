@@ -1,0 +1,29 @@
+# Eval sweep config — LiveCodeBench v6
+# Usage: python eval/sweep_checkpoints.py --config eval/configs/sweep_lcbv6.yaml
+
+eval_task: "LiveCodeBenchSelectionID"
+lcb_version: "v6"
+selection_mode: "ranking"
+
+# Checkpoint to evaluate
+checkpoint_s3: "s3://your-bucket/checkpoints/qwen3_30b_instruct_grpo"
+checkpoint_steps: []     # Empty = auto-discover all steps from latest_checkpointed_iteration.txt
+save_freq: 10
+
+# Base model (for generation in base+ckpt mode)
+base_model_s3: "s3://your-bucket/models/Qwen3-30B-A3B-Instruct-2507"
+base_model_hf: "Qwen/Qwen3-30B-A3B-Instruct-2507"
+
+# Eval settings
+num_repeats: 10
+n_rollouts: 6
+generator: "base"     # "base" or "ckpt"
+ranker: "base"        # "base" or "ckpt"
+
+# vLLM settings
+tp_size: 4
+gpu_memory_utilization: 0.90
+sampling_params: "temperature=1.0,top_p=1.0,top_k=-1"
+
+# Output
+results_dir: "./output/eval_results/lcbv6"

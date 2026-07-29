@@ -1,0 +1,49 @@
+# Centralized path configuration
+# Modify this file to point to your own model, data, and output locations.
+
+model:
+  # HuggingFace model identifier (used for download if local_cache doesn't exist)
+  hf_id: "Qwen/Qwen3-30B-A3B-Instruct-2507"
+  # Local cache directory for the model weights
+  local_cache: "/mnt/models/Qwen3-30B-A3B-Instruct-2507"
+  # S3 path for model weights cache (optional, speeds up multi-node download)
+  s3_cache: "s3://your-bucket/models/Qwen3-30B-A3B-Instruct-2507"
+
+dataset:
+  # Raw coding problems dataset (parquet format)
+  # Expected schema: statement (dict), starter_code (str), problem_type (str), test_suites (list)
+  raw_path: "/path/to/rstar_seed/rstar_coder_codex_v4_schema.parquet"
+  # S3 path for raw dataset (downloaded if raw_path doesn't exist locally)
+  raw_s3: "s3://your-bucket/datasets/rstar_seed/v0.00/"
+
+output:
+  # Directory for generated self-distillation data (parquet files)
+  data_dir: "./output/sd_data"
+  # S3 path for syncing generated data (optional, for multi-node)
+  data_s3: ""
+  # Directory for processed training data (train.parquet, test.parquet)
+  processed_data_dir: "./output/processed_data"
+  # Directory for training checkpoints
+  checkpoint_dir: "./output/checkpoints"
+  # S3 path for checkpoint sync (enables resume across restarts)
+  checkpoint_s3: "s3://your-bucket/checkpoints/qwen3_30b_instruct_grpo"
+  # S3 path for eval results
+  eval_results_s3: "s3://your-bucket/eval_results/qwen3_30b_instruct_grpo"
+
+sandbox:
+  # Docker image for code execution sandbox
+  docker_image: "your-registry/code_sandbox:latest"
+  # Host and port for the sandbox HTTP server
+  host: "localhost"
+  port: 8080
+  # Number of sandbox instances for parallel verification
+  num_instances: 64
+  # Execution limits
+  run_timeout: 10
+  memory_limit_mb: 512
+  max_tests_per_example: 50
+
+# S3 configuration (for boto3)
+s3:
+  endpoint_url: null  # Set to custom endpoint if not using AWS (e.g. MinIO)
+  region: "us-east-1"
