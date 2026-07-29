@@ -84,8 +84,8 @@ All paths are centralized in **one file** — `configs/paths.yaml`:
 
 ```yaml
 model:
-  hf_id: "Qwen/Qwen3-30B-A3B-Instruct-2507"
-  local_cache: "/mnt/models/Qwen3-30B-A3B-Instruct-2507"
+  hf_id: "Qwen/Qwen3-30B-A3B-Thinking-2507"
+  local_cache: "/mnt/models/Qwen3-30B-A3B-Thinking-2507"
 dataset:
   raw_path: "/path/to/coding_problems.parquet"
 output:
