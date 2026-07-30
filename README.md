@@ -8,8 +8,9 @@
 [![Python](https://img.shields.io/badge/python-3.10+-3776AB.svg?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
 [![Model](https://img.shields.io/badge/base-Qwen3--30B--A3B-6633CC.svg?style=flat-square)](https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507)
 [![Benchmark](https://img.shields.io/badge/eval-LiveCodeBench%20v5%2Fv6-ff6b6b.svg?style=flat-square)](https://livecodebench.github.io/)
+[![Data & Weights](https://img.shields.io/badge/data%20%26%20weights-anonymous%20link-34A853.svg?style=flat-square&logo=googledrive&logoColor=white)](https://drive.google.com/drive/folders/15KUAPaF4tikJLH7QEq27LVRYQzW4mgdl?usp=sharing)
 
-[**Key Idea**](#-key-idea) · [**Pipeline**](#-pipeline) · [**Quick Start**](#-quick-start) · [**Setup**](#-setup) · [**Usage**](#-detailed-usage) · [**Design**](#-design-choices)
+[**Key Idea**](#-key-idea) · [**Pipeline**](#-pipeline) · [**Data & Weights**](#-data--model-weights) · [**Quick Start**](#-quick-start) · [**Setup**](#-setup) · [**Usage**](#-detailed-usage) · [**Design**](#-design-choices)
 
 <img src="assets/intro_figure.png" width="88%" alt="DuST pipeline overview"/>
 
@@ -66,6 +67,21 @@ better judgment → better selection at test time → better generation data →
 | 3 | **Prepare Training** | `training/prepare_data.py` | Ranking prompts + labels |
 | 4 | **GRPO Training** | `training/run_grpo.sh` | Trained judge (Megatron + verl) |
 | 5 | **Evaluation** | `eval/sweep_checkpoints.py` | LiveCodeBench v5/v6 with selection |
+
+---
+
+## 📦 Data & Model Weights
+
+Our self-distillation data and trained model weights are released through an **anonymous link** (no login or Google account required, and no author information is exposed):
+
+<div align="center">
+
+### 🔗 [**Data + Model Weights (anonymous link)**](https://drive.google.com/drive/folders/15KUAPaF4tikJLH7QEq27LVRYQzW4mgdl?usp=sharing)
+
+</div>
+
+> [!NOTE]
+> The link is anonymized for double-blind review. Permanent hosting (e.g., HuggingFace) will replace it in the camera-ready version.
 
 ---
 
