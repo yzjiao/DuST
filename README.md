@@ -27,17 +27,6 @@ Test-time scaling reveals which candidates succeed and which fail — but this c
 
 **DuST** (Dual Self-Training) recycles it: sample candidates, label via execution, and train the model to *rank* them by correctness using GRPO. The model is never directly rewarded for generating correct code, yet **both judgment and generation improve**.
 
-<div align="center">
-
-| Metric | Gain on LiveCodeBench |
-|:--|:--|
-| Best-of-4 accuracy | **+4.1** |
-| pass@1 | **+3.1** |
-
-</div>
-
-A single rollout from the trained model matches the base model's Best-of-4.
-
 ---
 
 ## 🔑 Key Idea
